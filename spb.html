@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOAT | Voice Gallery</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background: linear-gradient(135deg, #e4e8ea 0%, #09dc09 100%);
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      letter-spacing: 4px;
+      background: linear-gradient(90deg, #48bfe3, #0072ff);
+      box-shadow: 0 0 40px #d61016e9;
+      border-bottom: 4px solid #fff;
+      font-size: 2.3em;
+      color: #111;
+      text-align: center;
+      padding: 18px 10px;
+      border-radius: 8px;
+      margin: 0;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 32px 10px 18px 10px;
+      gap: 22px;
+    }
+    .gallery img {
+      border: 3px solid white;
+      box-shadow: 0 4px 36px 0 #fff4, 0 6px 22px #0072ff66;
+      transition: all 0.3s cubic-bezier(.2,.9,.28,1.2);
+      height: 200px; 
+      width: 160px;
+      border-radius: 20px;
+      cursor: pointer;
+      object-fit: cover;
+      background: #eee;
+    }
+    .gallery img:hover {
+      transform: scale(1.13) rotate(-2deg);
+      box-shadow: 0 0 80px #00ffc366;
+    }
+    .rotate {
+      animation: spin 1s ease-in-out 3;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.83);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .overlay img {
+      width: 200px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #ff002de0;
+      animation: zoomIn 0.4s ease;
+      background: #fff;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    audio {
+      width: 80%;
+      margin: 18px auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 8px 21px #607df860;
+    }
+    .voice-bar {
+      position: fixed;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg,#00c6ff,#0072ff);
+      color: #111;
+      font-weight: bold;
+      border-radius: 15px;
+      padding: 12px 36px;
+      font-size: 1.1em;
+      box-shadow: 0 8px 28px 2px #1118;
+      z-index: 1200;
+      transition: opacity 0.6s;
+      opacity: 0.5;
+      pointer-events: none;
+      min-width: 230px;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+    button {
+      margin: 15px;
+      padding: 11px 25px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ffaf7b, #d76d77, #3a1c71);
+      color: white;
+      transition: background 0.8s;
+      box-shadow: 0 2px 20px #ab315c44;
+      font-size: 1em;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #3a1c71, #d76d77, #ffaf7b);
+      box-shadow: 0 0 14px #fa0;
+    }
+  </style>
+</head>
+<body>
+  <h1>GOAT</h1>
+  <!-- Gallery -->
+  <div class="gallery">
+    <img src="https://i.pinimg.com/736x/88/25/7f/88257fff98bdb8c54996cec469a55991.jpg" alt="materani">
+    <img src="https://i.pinimg.com/736x/9c/cb/67/9ccb67266934349241b6055b7a125149.jpg" alt="jabilli kosam">
+    <img src="https://i.pinimg.com/1200x/f4/a3/52/f4a3523f3a86ad98913828e7263b234e.jpg" alt="singarala">
+    <img src="https://i.pinimg.com/736x/d9/b6/b3/d9b6b37598f5b28b2e6dfd772b50b858.jpg" alt="balapampatti">
+    <img src="https://i.pinimg.com/1200x/0d/3a/29/0d3a29d997b9693b042639248cd29c1b.jpg" alt="prema">
+    <img src="https://i.pinimg.com/736x/aa/2f/10/aa2f105ce582d166ba1d6549f637e014.jpg" alt="abbo">
+    <img src="https://i.pinimg.com/736x/a2/a0/71/a2a07117cccf6aa55a4a6d4b51f83860.jpg" alt="botany">
+    <img src="https://i.ytimg.com/vi/RJ_lzx1CX2k/oar2.jpg" alt="are emaindhi">
+    <img src="https://i.pinimg.com/736x/87/15/3f/87153f9a7495cd844afc718e9247c37c.jpg" alt="suvvee suvvee">
+    <img src="https://m.media-amazon.com/images/S/pv-target-images/16f08ea751a2d05582817083027c8ad975d0aed3210dd7ed4bac164aa49fdcbc.jpg" alt="priya">
+    <img src="https://i.pinimg.com/736x/99/1d/30/991d30081fd0742ed608be9595fa7691.jpg" alt="thelusa manasa">
+    <img src="https://i.pinimg.com/1200x/cc/b1/1c/ccb11c7bd895b3fc42283d469c34b161.jpg" alt="gunna">
+  </div>
+  <!-- Overlay -->
+  <div id="overlay" class="overlay" onclick="closeOverlay()">
+    <img id="overlayImg" src="">
+  </div>
+  <!-- Audio Player -->
+  <audio id="audioPlayer" controls>
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <!-- Voice recognition feedback -->
+  <div id="asrTranscript" class="voice-bar" style="opacity:0.5">Say the song name...</div>
+  <!-- Home button -->
+  <center>
+    <a href="index.html"><button>HOME</button></a>
+  </center>
+  <script>
+    // Map: song keywords -> audio file names
+    const songs = {
+      "materani": "materani.mp3",
+      "jabilli kosam": "jabilli kosam.mp3",
+      "singarala": "singarala.mp3",
+      "balapampatti": "balapampatti.mp3",
+      "prema": "prema.mp3",
+      "abbo": "abbo.mp3",
+      "botany": "botany.mp3",
+      "are emaindhi": "are emaindhi.mp3",
+      "suvvee suvvee": "suvvee suvvee.mp3",
+      "priya": "priya.mp3",
+      "thelusa manasa": "thelusa manasa.mp3",
+      "gunna": "gunna.mp3"
+    };
+
+    // Play a song by filename
+    function playSong(song) {
+      let player = document.getElementById("audioPlayer");
+      player.src = song;
+      player.play();
+    }
+
+    // Animate image, then overlay with audio
+    function animateImage(img, song) {
+      img.classList.add("rotate");
+      setTimeout(() => {
+        img.classList.remove("rotate");
+        openImage(img, song);
+      }, 3000); 
+    }
+
+    // Show overlay and play song
+    function openImage(img, song) {
+      let overlay = document.getElementById("overlay");
+      let overlayImg = document.getElementById("overlayImg");
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+      playSong(song);
+    }
+
+    function closeOverlay() {
+      document.getElementById("overlay").classList.remove("active");
+    }
+
+    // Add click handlers for all images
+    window.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll(".gallery img").forEach(img => {
+        img.addEventListener("click", function() {
+          animateImage(img, songs[img.alt]);
+        });
+      });
+    });
+
+    // Show transcript visually
+    function showTranscript(text) {
+      let box = document.getElementById("asrTranscript");
+      if (box) {
+        box.innerText = "Voice: " + text;
+        box.style.opacity = "1";
+        setTimeout(() => { box.style.opacity = "0.5"; }, 2000);
+      }
+    }
+
+    // Show overlay by song key (triggered from voice)
+    function showOverlayBySong(songKey) {
+      let gallery = document.querySelectorAll(".gallery img");
+      gallery.forEach(img => {
+        if (img.alt.trim().toLowerCase() === songKey) {
+          openImage(img, songs[songKey]);
+        }
+      });
+    }
+
+    // Voice recognition (continuous, hands-free, no button)
+    window.onload = function() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        let recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = false;
+        recognition.lang = "en-US";
+        recognition.start();
+
+        recognition.onresult = function(event) {
+          const transcript = event.results[event.resultIndex][0].transcript.trim().toLowerCase();
+          let matched = false;
+          for (const key in songs) {
+            if (transcript.includes(key)) {
+              showOverlayBySong(key);
+              matched = true;
+              break;
+            }
+          }
+          showTranscript(matched ? `🎶 ${transcript}` : transcript);
+        };
+
+        recognition.onerror = function(event) {
+          showTranscript("ASR error: " + event.error);
+        };
+      } else {
+        showTranscript("Speech recognition not supported in this browser.");
+      }
+    };
+  </script>
+</body>
+</html>

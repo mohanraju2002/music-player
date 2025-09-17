@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>💕 LOVE 💕</title>
+  <style>
+    /* Updated CSS */
+    body {
+      background-color: #121212;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1 {
+      background: linear-gradient(90deg, #4adede, #00c897);
+      font-size: 2.2rem;
+      text-align: center;
+      padding: 15px 10px;
+      margin: 0;
+      font-weight: 700;
+      color: #000;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0, 200, 150, 0.3);
+    }
+
+    .gallery {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    img {
+      border: 4px solid #ffffffcc;
+      border-radius: 18px;
+      width: 240px;
+      height: 300px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 0 5px #fff3;
+    }
+
+    img:hover,
+    img:focus-visible {
+      transform: scale(1.1);
+      border-color: #00d1b2;
+      box-shadow: 0 0 60px #00d1b2, 0 0 10px #00f2db;
+      outline: none;
+      z-index: 1;
+    }
+
+    img.active {
+      box-shadow: 0 0 70px #00ffa2, 0 0 20px #00ffda;
+      border-color: #00ffa2;
+      transform: scale(1.12);
+      z-index: 2;
+    }
+
+    #nowPlaying {
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 15px auto 30px auto;
+      max-width: 800px;
+      padding: 8px 15px;
+      background: rgba(0, 209, 178, 0.1);
+      border-radius: 12px;
+      color: #00d1b2;
+      user-select: none;
+      font-weight: 600;
+    }
+
+    audio {
+      display: block;
+      margin: 0 auto 30px auto;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00d1b2aa;
+      background-color: #1e1e1e;
+      outline: none;
+    }
+
+    center button {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: #00d1b2;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      color: #121212;
+      box-shadow: 0 0 15px #00d1b2aa;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+    }
+
+    center button:hover,
+    center button:focus-visible {
+      background: #00ffa2;
+      outline: none;
+      box-shadow: 0 0 25px #00ffa2ff;
+      color: #004d40;
+    }
+  </style>
+</head>
+<body>
+  <h1>💕 LOVE 💕</h1>
+
+  <div class="gallery" role="list">
+    <img src="https://i.pinimg.com/736x/be/a8/fe/bea8fe86a358e92f05dcfe131e2081bd.jpg" data-audio="[iSongs.info] 01 - Hey Rangule.mp3" alt="Hey Rangule" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/1200x/7e/5b/24/7e5b24058b7be161f9d9f57ff6c94885.jpg" data-audio="[iSongs.info] 01 - Na Roja Nuvve.mp3" alt="Na Roja Nuvve" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/1200x/58/7a/9e/587a9ec0b74c92dd9c0bcf50ddedb175.jpg" data-audio="[iSongs.info] 01 - O Rendu Prema Meghaalila.mp3" alt="O Rendu Prema Meghaalila" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/1200x/2a/23/51/2a2351b2b7baa356e53fe1628add447e.jpg" data-audio="[iSongs.info] 01 - Pilla Padesaave.mp3" alt="Pilla Padesaave" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/57/70/2c/57702c0e5be992354f18e535051add6e.jpg" data-audio="[iSongs.info] 01 - Ye Kshanam.mp3" alt="Ye Kshanam" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/ff/e6/40/ffe640d1105966d92a909e56da397959.jpg" data-audio="[iSongs.info] 02 - Aradhya.mp3" alt="Aradhya" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/dd/57/2a/dd572a52719c575bb9160dc7a826b3cc.jpg" data-audio="[iSongs.info] 02 - Hoyna Hoyna.mp3" alt="Hoyna Hoyna" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/12/44/3e/12443ef34b37ab21f8349f32ad9b6145.jpg" data-audio="[iSongs.info] 02 - Idhi Chala Baagundhi Le.mp3" alt="Idhi Chala Baagundhi Le" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/1200x/76/75/40/767540b89c1d87a702c46d65598922f6.jpg" data-audio="[iSongs.info] 02 - Kannullo Ne Roopame.mp3" alt="Kannullo Ne Roopame" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/4c/3e/3e/4c3e3ecfc30f09ccf6d164c64925e1ef.jpg" data-audio="[iSongs.info] 01 - Andhamaina Chandhamaama.mp3" alt="Andhamaina Chandhamaama" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/1200x/a0/c6/4b/a0c64bcac8a0635c1dfc640940a735c3.jpg" data-audio="[iSongs.info] 01 - Chinnadana Neekosam.mp3" alt="Chinnadana Neekosam" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/1200x/ab/86/3a/ab863ad15f1ad43e7b5f145dc4254f3b.jpg" data-audio="[iSongs.info] 01 - Dheemthanana.mp3" alt="Dheemthanana" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/35/b7/d8/35b7d869d170a5fcc8b22e8add7c270f.jpg" data-audio="[iSongs.info] 01 - Godari Gattu.mp3" alt="Godari Gattu" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/19/0c/94/190c94f65a6ce58023a557b3cd0791e0.jpg" data-audio="[iSongs.info] 01 - Nee Kannu Neeli Samudram.mp3" alt="Nee Kannu Neeli Samudram" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/2d/89/30/2d89305d996d3403898fa45af343e520.jpg" data-audio="[iSongs.info] 01 - Nijame Ne Chebutunna.mp3" alt="Nijame Ne Chebutunna" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/64/c8/63/64c863155b9fc8a8d104f4df4888a0b7.jpg" data-audio="[iSongs.info] 01 - Oh Sita Hey Rama.mp3" alt="Oh Sita Hey Rama" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/56/c2/1a/56c21a44f2b5119ca3c971e0c992f449.jpg" data-audio="[iSongs.info] 02 - Inthandham.mp3" alt="Inthandham" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/65/c9/78/65c97850fe051af1dec3bef4d2626518.jpg" data-audio="[iSongs.info] 01 - Prema Velluva.mp3" alt="Prema Velluva" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/3b/13/ac/3b13acab672bf2801b27a15fda57016b.jpg" data-audio="[iSongs.info] 01 - Chitti.mp3" alt="Chitti" role="listitem" tabindex="0" />
+    <img src="https://i.pinimg.com/736x/af/26/f9/af26f9d808de571fd971e47f62b80914.jpg" data-audio="[iSongs.info] 01 - Ayyayyo.mp3" alt="Ayyayyo" role="listitem" tabindex="0" />
+  </div>
+
+  <center>
+    <a href="index.html"><button type="button">HOME</button></a>
+  </center>
+
+  <audio id="audioPlayer" controls aria-live="polite" aria-label="Audio player controls">
+    Your browser does not support the audio element.
+  </audio>
+  <p id="nowPlaying" aria-live="polite" aria-atomic="true" role="status">Click an image OR say the song name 🎤</p>
+
+  <script>
+    const audioPlayer = document.getElementById('audioPlayer');
+    const nowPlaying = document.getElementById('nowPlaying');
+    const images = document.querySelectorAll('.gallery img');
+
+    function playSong(img) {
+      const audioSrc = img.getAttribute('data-audio');
+      if (audioSrc) {
+        audioPlayer.src = audioSrc;
+        audioPlayer.play().catch(e => console.log("Playback failed:", e));
+        nowPlaying.textContent = `Now Playing: ${audioSrc}`;
+        images.forEach(i => i.classList.remove('active'));
+        img.classList.add('active');
+      }
+    }
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        playSong(img);
+      });
+
+      img.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          playSong(img);
+        }
+      });
+    });
+
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if ('SpeechRecognition' in window) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase().trim();
+        nowPlaying.textContent = `Heard: "${transcript}"`;
+        images.forEach(img => {
+          const song = img.getAttribute('data-audio').toLowerCase();
+          if (song.includes(transcript)) {
+            playSong(img);
+          }
+        });
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+      };
+
+      recognition.onend = () => {
+        recognition.start();
+      };
+
+      recognition.start();
+    } else {
+      nowPlaying.textContent = "Speech Recognition not supported in this browser.";
+    }
+  </script>
+</body>
+</html>
+
+

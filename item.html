@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Item Songs</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      background-color: aqua;
+      font-size: 30px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      color: black;
+      margin: 0;
+    }
+
+    /* Grid layout for all 16 images */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      padding: 30px;
+    }
+
+    .image-wrapper {
+      position: relative;
+      text-align: center;
+    }
+
+    img {
+      border: 3px solid white;
+      transition: all 0.3s ease-in-out;
+      height: 300px;
+      width: 240px;
+      border-radius: 20px;
+      opacity: 0.3; /* Initially dimmed */
+    }
+
+    .image-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .image-cover span {
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .image-wrapper:hover .image-cover {
+      opacity: 0;
+    }
+
+    .image-wrapper:hover img {
+      opacity: 1;
+      transform: scale(1.05);
+      box-shadow: 0 0 40px red;
+    }
+
+    img:hover {
+      cursor: pointer;
+    }
+
+    /* Highlight currently playing */
+    .playing img {
+      border: 3px solid lime;
+      box-shadow: 0 0 40px lime;
+      opacity: 1 !important;
+      transform: scale(1.08);
+    }
+
+    .player {
+      text-align: center;
+      margin: 20px;
+    }
+
+    #nowPlaying {
+      color: yellow;
+      font-size: 20px;
+      margin: 10px;
+      text-shadow: 0 0 10px lime;
+    }
+
+    #voiceStatus {
+      color: lime;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    button {
+      color: black;
+      padding: 10px 20px;
+      margin: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>ITEM SONGS</h1>
+
+  <!-- Song Image Grid (16 images in center grid) -->
+  <div class="container">
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/0a/09/1d/0a091d5314d58d12b17e9b5027142712.jpg" data-src="chai.mp3"><div class="image-cover"><span>coffee</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/43/b2/e0/43b2e0181a2c1c0d10ea3727a65df6e0.jpg" data-src="pushpa.mp3"><div class="image-cover"><span>Pushpa</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/1200x/63/f3/8a/63f38a95ffa1a9d0e40c36debd3838cc.jpg" data-src="apple.mp3"><div class="image-cover"><span>Apple</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/60/39/ef/6039eff92d3d936627aeac9c36b44b99.jpg" data-src="swingara.mp3"><div class="image-cover"><span>Swing</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/e6/e3/80/e6e380ecf3b44e0eb3b613336b4f07fc.jpg" data-src="adida suprise.mp3"><div class="image-cover"><span>Adida Surprise</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/3a/96/58/3a9658d6db2c8ae0e23d4a012e0ac068.jpg" data-src="monica.mp3"><div class="image-cover"><span>Monica</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/be/08/67/be08678d9fab076b86202e89d8c7df43.jpg" data-src="pacca locel.mp3"><div class="image-cover"><span> Locel</span></div></div>
+    <div class="image-wrapper"><img src="https://www.indiaherald.com/ImageStore/images/movies/movies_latestnews/pawan-kevvu-keka415x250.jpg" data-src="kevu keka.mp3"><div class="image-cover"><span>mango</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/1200x/82/42/40/82424024ad99954612b5a05f4aeb7aaa.jpg" data-src="junction lo.mp3"><div class="image-cover"><span>Junction Lo</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/1200x/ae/92/b8/ae92b881dda1eebccc8f82551d9e92d7.jpg" data-src="katrina kaif.mp3"><div class="image-cover"><span>Katrina Kaif</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/ee/a1/81/eea1815997340d64d93ddd3ddb70cd2a.jpg" data-src="kaja rare.mp3"><div class="image-cover"><span>Kaja Rare</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/27/91/86/279186b53000e42d030ff43597f65d32.jpg" data-src="jigel rani.mp3"><div class="image-cover"><span>Jigel Rani</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/736x/11/4b/a0/114ba00ad563b3903b92abfc98180f91.jpg" data-src="ipatike inka.mp3"><div class="image-cover"><span>Ipatike</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/1200x/14/e3/3d/14e33d60a702f56a2da4acbdb7555810.jpg" data-src="ringa ringa.mp3"><div class="image-cover"><span>Ringa Ringa</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/1200x/00/a3/19/00a31950d0d34d39a4b67b9c77efb673.jpg" data-src="bang bang.mp3"><div class="image-cover"><span>Bang Bang</span></div></div>
+    <div class="image-wrapper"><img src="https://i.pinimg.com/1200x/9b/b3/c3/9bb3c32a9e86abc032373618754f9b3c.jpg" data-src="bavalasayya.mp3"><div class="image-cover"><span>Bavalasayya</span></div></div>
+  </div>
+
+  <!-- Player -->
+  <div class="player">
+    <h2 id="nowPlaying">🎵 Click or Say the song name to play</h2>
+    <audio id="audioPlayer" controls>
+      <source id="audioSource" src="" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <div id="voiceStatus">🎤 Voice Assistant Listening...</div>
+  </div>
+
+  <center>
+    <a href="index.html">
+      <button>HOME</button>
+    </a>
+  </center>
+
+  <!-- JavaScript -->
+  <script>
+    const imageWrappers = document.querySelectorAll(".image-wrapper");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const audioSource = document.getElementById("audioSource");
+    const nowPlaying = document.getElementById("nowPlaying");
+    const voiceStatus = document.getElementById("voiceStatus");
+
+    function playSong(song) {
+      imageWrappers.forEach(w => w.classList.remove("playing"));
+      imageWrappers.forEach(wrapper => {
+        const img = wrapper.querySelector("img");
+        if (img.getAttribute("data-src") === song) {
+          wrapper.classList.add("playing");
+        }
+      });
+      audioSource.src = song;
+      audioPlayer.load();
+      audioPlayer.play();
+      nowPlaying.textContent = "🎶 Now Playing: " + song;
+    }
+
+    imageWrappers.forEach(wrapper => {
+      wrapper.addEventListener("click", () => {
+        const img = wrapper.querySelector("img");
+        playSong(img.getAttribute("data-src"));
+      });
+    });
+
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.lang = "en-US";
+
+    recognition.onstart = () => {
+      voiceStatus.textContent = "🎤 Voice Assistant Listening...";
+    };
+
+    recognition.onresult = (event) => {
+      let command = event.results[event.results.length - 1][0].transcript.toLowerCase();
+      console.log("Heard:", command);
+      imageWrappers.forEach(wrapper => {
+        let song = wrapper.querySelector("img").getAttribute("data-src").toLowerCase();
+        if (command.includes(song.replace(".mp3",""))) {
+          playSong(wrapper.querySelector("img").getAttribute("data-src"));
+        }
+      });
+    };
+
+    recognition.onerror = () => {
+      voiceStatus.textContent = "⚠️ Voice error. Refresh page.";
+    };
+
+    recognition.start();
+  </script>
+</body>
+</html>

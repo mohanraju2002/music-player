@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devotes Playlist</title>
+  <style>
+    body {
+      background-color: rgba(11, 11, 11, 0.963);
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      background-color: aqua;
+      color: black;
+      padding: 15px;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    img {
+      border: 3px solid white;
+      transition: all 0.3s ease-in-out;
+      height: 300px;
+      width: 240px;
+      border-radius: 20px;
+      margin: 10px;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+      box-shadow: 0 0 50px red;
+    }
+
+    img.active {
+      box-shadow: 0 0 50px limegreen;
+      transform: scale(1.08);
+    }
+
+    audio {
+      width: 80%;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .home-btn {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .home-btn button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      background-color: aqua;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .home-btn button:hover {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+<body>
+  <h1><b>👏 DEVOTES 👏</b></h1>
+
+  <!-- GALLERY SECTION -->
+  <div class="gallery">
+    <img src="https://i.pinimg.com/736x/cf/3a/e2/cf3ae2081ad31dc02d4ec11f7651bf0b.jpg" data-audio="Dandaalayya  - SenSongsMp3.Co.mp3" alt="vinayaka">
+    <img src="https://i.pinimg.com/736x/78/3d/33/783d33ab277a9a6182da4461c79db868.jpg" data-audio="[iSongs.info] 01 - Shiva Shiva Shankaraa.mp3" alt="Shiva">
+    <img src="https://i.pinimg.com/736x/13/35/a0/1335a0045c281ad136026fc2325bf03d.jpg" data-audio="Anjanadri Theme.mp3" alt="hanuma ">
+    <img src="https://i.pinimg.com/1200x/6b/50/e7/6b50e76cf125d02b55addcc265c021ac.jpg" data-audio="song4.mp3" alt="ayyapa">
+    <img src="https://i.pinimg.com/1200x/f7/6f/4a/f76f4adefa9cbba654b152f54ea7924f.jpg" data-audio="song5.mp3" alt="sai">
+    <img src="https://i.pinimg.com/1200x/23/b5/2d/23b52d2af4883265f5e7d27835fb1fc8.jpg" data-audio="song6.mp3" alt="amma">
+    <img src="https://i.pinimg.com/736x/0b/6f/8a/0b6f8a55d305b2d0ebf2e449390016e2.jpg" data-audio="song7.mp3" alt="venkateswara">
+    <img src="https://i.pinimg.com/736x/36/95/b4/3695b4a13d5d0567e46f60d29b37003f.jpg" data-audio="song8.mp3" alt="surya">
+    <img src="https://i.pinimg.com/1200x/63/82/99/638299d3d8985e1f1039578801d22d8e.jpg" data-audio="song9.mp3" alt="krishna">
+    <img src="https://i.pinimg.com/736x/05/7c/95/057c958835abfc8e117cbaf3ff86b3b5.jpg" data-audio="[iSongs.info] 01 - Jai Shri Ram.mp3" alt="ram">
+    <img src="https://i.pinimg.com/736x/0a/4b/90/0a4b90c29b8d7b2bcbb30a011c5b6cee.jpg" data-audio="Om Namo Bhagavate Vasudevaya (Telugu)(KoshalWorld.Com).mp3" alt=" Vasudevaya">
+    <img src="https://i.pinimg.com/736x/d5/7b/36/d57b3636cdcab4e9b592757b298182f8.jpg" data-audio="[iSongs.info] 02 - Arere Yekkada.mp3" alt="king">
+  </div>
+
+  <!-- AUDIO PLAYER -->
+  <audio id="audioPlayer" controls>
+    <source id="audioSource" src="" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- HOME BUTTON -->
+  <div class="home-btn">
+    <a href="index.html"><button>HOME</button></a>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioSource = document.getElementById('audioSource');
+
+    // Click functionality
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        playSong(img);
+      });
+    });
+
+    // Function to play song
+    function playSong(img) {
+      const audioFile = img.getAttribute('data-audio');
+      images.forEach(image => image.classList.remove('active'));
+      img.classList.add('active');
+      audioSource.src = audioFile;
+      audioPlayer.load();
+      audioPlayer.play();
+    }
+
+    // Auto Voice Assistant using Web Speech API
+    window.onload = () => {
+      if (!('webkitSpeechRecognition' in window)) {
+        alert("Sorry, your browser doesn't support speech recognition.");
+        return;
+      }
+
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = "en-IN";
+      recognition.continuous = true;   // Keep listening
+      recognition.interimResults = false;
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const command = event.results[event.results.length - 1][0].transcript.toLowerCase();
+        console.log("You said:", command);
+
+        let found = false;
+        images.forEach(img => {
+          const songName = img.alt.toLowerCase();
+          if (command.includes(songName)) {
+            playSong(img);
+            found = true;
+          }
+        });
+
+        if (!found) {
+          console.log("Song not found. Try saying the song name again.");
+        }
+      };
+
+      recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+      };
+    };
+  </script>
+</body>
+</html>

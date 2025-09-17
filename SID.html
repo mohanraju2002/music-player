@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SID SRIRAM</title>
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    h1 {
+      background-color: aqua;
+      font-size: 30px;
+      margin: 0;
+      padding: 20px 0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 8px #fff;
+    }
+    .gallery-row {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: var(--delay, 0s);
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    img {
+      border: 3px solid white;
+      transition: all 0.3s cubic-bezier(.17,.67,.83,.67);
+      height: 300px;
+      width: 240px;
+      border-radius: 20px;
+      box-shadow: 0 2px 15px #222;
+      cursor: pointer;
+      filter: grayscale(10%);
+    }
+    img:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 0 60px #00ffe7;
+      filter: grayscale(0%);
+      z-index: 2;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.active {
+      display: flex;
+      animation: modalIn 0.4s;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal-content img {
+      border-radius: 30px;
+      max-width: 90vw;
+      max-height: 80vh;
+      box-shadow: 0 0 55px aqua, 0 0 90px white inset;
+      border: 8px solid #fff;
+      animation: zoomIn 0.3s;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.7); }
+      to { transform: scale(1); }
+    }
+    .close-btn {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: white;
+      font-size: 38px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      background: none;
+      text-shadow: 1px 1px 8px aquamarine;
+      z-index: 1010;
+    }
+    .home-btn {
+      margin: 35px;
+      padding: 10px 38px;
+      font-size: 23px;
+      border-radius: 15px;
+      color: #111;
+      background: linear-gradient(90deg, aqua, #fff 80%);
+      cursor: pointer;
+      border: 2px solid aqua;
+    }
+    .home-btn:hover {
+      background: linear-gradient(90deg,aquamarine,white 80%);
+      color: #007f7f;
+      box-shadow: 0 0 15px aqua;
+    }
+  </style>
+</head>
+<body>
+  <center><h1>SID SRIRAM</h1></center>
+  
+  <!-- Gallery Rows -->
+  <div class="gallery-row" style="--delay:0.1s;">
+    <a href="kalaavathi.mp3"><img src="https://i.pinimg.com/1200x/b0/c5/bb/b0c5bb19562c5a314038a9fef8ffb44e.jpg"/></a>
+    <a href="ye kannulu.mp3"><img src="https://i.pinimg.com/1200x/33/c3/6e/33c36e1de3f8fa76c4ae8cda167f1537.jpg"/></a>
+    <a href="so so ga.mp3"><img src="https://i.pinimg.com/736x/72/c4/d0/72c4d067a8030b00fb70148ffa84304f.jpg"/></a>
+    <a href="leharaayi.mp3"><img src="https://i.pinimg.com/1200x/0c/a6/27/0ca6278c48069f321c134b9e43bf0c69.jpg"/></a>
+  </div>
+
+  <div class="gallery-row" style="--delay:0.3s;">
+    <a href="srivalli.mp3"><img src="https://i.pinimg.com/736x/e5/ce/f3/e5cef30d7af6dc87f155bb15428ae09e.jpg"/></a>
+    <a href="sr.mp3"><img src="https://i.pinimg.com/1200x/e1/00/a9/e100a9d70f42bb51b3d7c441f0438811.jpg"/></a>
+    <a href="samajavaragamana.mp3"><img src="https://i.pinimg.com/1200x/70/47/63/7047637d411fbb0e936209e9b71660dc.jpg"/></a>
+    <a href="taxi.mp3"><img src="https://i.pinimg.com/736x/09/ca/0e/09ca0efd0d77ec3e6d26d4ccea4ecf30.jpg"/></a>
+  </div>
+
+  <div class="gallery-row" style="--delay:0.5s;">
+    <a href="premaa.mp3"><img src="https://i.pinimg.com/1200x/e4/22/83/e42283f81b017e0993776f4891b467b9.jpg"/></a>
+    <a href="manasa.mp3"><img src="https://i.pinimg.com/736x/35/80/d7/3580d755d82dd63131fce48a97a3c780.jpg"/></a>
+    <a href="akhil.mp3"><img src="https://i.pinimg.com/736x/70/1d/c0/701dc05741f849b33dc5c7bb3f448e4f.jpg"/></a>
+    <a href="oke oka lokam.mp3"><img src="https://i.pinimg.com/736x/15/83/f7/1583f7f16ed32afb54b878f8be294d9f.jpg"/></a>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal" id="imgModal">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <div class="modal-content">
+      <img id="modalImg" src="" alt="SID Large" />
+    </div>
+  </div>
+
+  <!-- HOME Button -->
+  <center>
+    <a href="index.html"><button class="home-btn"><b>HOME</b></button></a>
+  </center>
+
+  <!-- JavaScript -->
+  <script>
+    // Modal lightbox + Audio player
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('closeModal');
+
+    let currentAudio = null;
+    let currentImg = null;
+
+    document.querySelectorAll('.gallery-row a').forEach(link => {
+      const img = link.querySelector("img");
+
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Open modal
+        modalImg.src = img.src;
+        modal.classList.add('active');
+
+        // Stop previous audio
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          if (currentImg) currentImg.style.boxShadow = "";
+        }
+
+        // Play new audio
+        currentAudio = new Audio(this.href);
+        currentAudio.play();
+        currentImg = img;
+        currentImg.style.boxShadow = "0 0 40px lime, 0 0 70px yellow";
+
+        currentAudio.onended = () => {
+          currentImg.style.boxShadow = "";
+          currentAudio = null;
+        };
+      });
+    });
+
+    // Close modal
+    closeModal.onclick = function() {
+      modal.classList.remove('active');
+      modalImg.src = "";
+    };
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        modalImg.src = "";
+      }
+    };
+
+    // Escape closes modal
+    document.addEventListener('keydown', function(e){
+      if(e.key === "Escape" && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        modalImg.src="";
+      }
+    });
+  </script>
+</body>
+</html>

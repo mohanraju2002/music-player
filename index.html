@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entertainment</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+    }
+
+    h1.page-title {
+      font-size: 50px;
+      background-color: rgba(99, 245, 46, 0.92);
+      color: rgba(220, 7, 7, 0.9);
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      letter-spacing: 3px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      padding: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #f9f7f5;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      padding: 20px;
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .card h2 {
+      background-color: aqua;
+      text-align: center;
+      font-size: 32px;
+      margin: 0 0 20px 0;
+      padding: 10px;
+      border-radius: 8px;
+      color: black;
+    }
+
+    .movies h2 {
+      background-color: aquamarine;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 0px;
+      font-size: 15px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      background-color: rgba(215, 83, 7, 0.61);
+      box-shadow: 5px 5px 8px rgba(5, 193, 18, 0.8);
+      transition: all 0.2s ease-in-out;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: rgb(104, 213, 216);
+      transform: scale(1.02);
+    }
+
+    button img {
+      height: 25px;
+      width: 35px;
+      border-radius: 4px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* Voice Assistant Button */
+    .voice-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      font-size: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(39, 209, 1, 0.7);
+      transition: transform 0.2s;
+    }
+
+    .voice-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 18px;
+      color: rgb(249, 254, 249);
+    }
+  </style>
+</head>
+<body>
+  <h1 class="page-title">ENTERTAINMENT</h1>
+   <!-- Voice Assistant Button -->
+  <button class="voice-btn" id="voiceBtn">🔊🎤</button>
+  <p class="status" id="status"><b><mark style="background-color:rgb(16, 231, 242);font-size: 30px;">❤🔊 mic nokku niku emi kavalo chepu ❤</mark></b></p>
+
+  <div class="container">
+    <!-- Songs Section -->
+    <div class="card">
+      <h2>SONGS</h2>
+      <ul>
+        <li><a href="devote.html"><button>🙇‍♂️ DEVOTIONAL</button></a></li>
+        <li><a href="lovee.html"><button>💓 LOVE</button></a></li>
+        <li><a href="moodofff.html"><button>💔 MOOD OFF</button></a></li>
+        <li><a href="item.html"><button>💃 ITEM SONG</button></a></li>
+        <li><a href="spb.html">
+          <button>👑 SPB <img src="https://i.pinimg.com/736x/47/b0/ff/47b0ff2cc4a8ba1abfa4f5c41a145c48.jpg"></button>
+        </a></li>
+        <li><a href="SID.html">
+          <button>🎻 SID SRIRAM <img src="https://i.pinimg.com/736x/99/dd/b6/99ddb68c924a522492400dbcb4de1dc7.jpg"></button>
+        </a></li>
+        <li><a href="BAKKODU.html">
+          <button>🎤 ANIRUDH <img src="https://i.pinimg.com/1200x/ce/8b/3e/ce8b3e50e8a03b1b92de63d6cf932a5b.jpg"></button>
+        </a></li>
+      </ul>
+    </div>
+
+    <!-- Movies Section -->
+    <div class="card movies">
+      <h2>MOVIES</h2>
+      <p style="text-align:center; font-size:20px; padding:20px; color:gray;">🎬 Movies section coming soon...</p>
+    </div>
+  </div>
+
+ 
+
+  <script>
+    const voiceBtn = document.getElementById("voiceBtn");
+    const statusText = document.getElementById("status");
+
+    // Setup Speech Recognition
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-IN";
+    recognition.continuous = false;
+
+    voiceBtn.addEventListener("click", () => {
+      recognition.start();
+      statusText.textContent = "🎤 kasepu agu ...🧏‍♂️";
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript.toLowerCase();
+      statusText.textContent = "✅ You said: " + transcript;
+
+      if (transcript.includes("hey siri open devotional songs")) {
+        window.location.href = "devote.html";
+      } else if (transcript.includes("hey siri open love songs")) {
+        window.location.href = "lovee.html";
+      } else if (transcript.includes("hey siri open broken songs")) {
+        window.location.href = "moodofff.html";
+      } else if (transcript.includes(" hey siri open item")) {
+        window.location.href = "item.html";
+      } else if (transcript.includes("hey siri open spb songs")) {
+        window.location.href = "spb.html";
+      } else if (transcript.includes("hey siri open sriram songs")) {
+        window.location.href = "SID.html";
+      } else if (transcript.includes("hey siri open anirudh songs")) {
+        window.location.href = "BAKKODU.html";
+      } else {
+        statusText.textContent = "❌ perfect ga chepu ra mental na kodakaa";
+      }
+    };
+
+    recognition.onerror = (event) => {
+      statusText.textContent = "⚠️ Error: " + event.error;
+    };
+  </script>
+</body>
+</html>
+

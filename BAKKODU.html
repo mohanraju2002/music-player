@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BAKKODU Gallery</title>
+  <style>
+    body {
+      background: #121212;
+      color: #eee;
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      background: #00eaea;
+      font-size: 2.2rem;
+      margin: 0;
+      padding: 24px 0;
+      letter-spacing: 4px;
+      border-radius: 0 0 20px 20px;
+      text-align: center;
+      color: #1d1d1d;
+      box-shadow: 0 8px 32px rgba(0, 255, 255, 0.16);
+    }
+    .gallery-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      padding: 28px 0;
+    }
+    .gallery-row img {
+      border: 3px solid #222;
+      height: 300px;
+      width: 240px;
+      object-fit: cover;
+      border-radius: 22px;
+      transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
+      background: #fff1;
+    }
+    .gallery-row img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 40px #ff004f;
+      filter: brightness(1.15) saturate(1.2);
+      border-color: #444;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 32px;
+      font-size: 1rem;
+      padding: 12px 42px;
+      background: #00eaea;
+      color: #121212;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 2px 12px #008c8c44;
+      transition: background 0.18s;
+    }
+    button:hover {
+      background: #00b3b3;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      .gallery-row img {
+        width: 40vw;
+        height: 22vw;
+      }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.4rem; }
+      .gallery-row img { width: 90vw; height: 54vw;}
+      .gallery-row { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>BAKKODU</h1>
+  <div class="gallery-row">
+    <img src="https://i.pinimg.com/736x/e6/ad/70/e6ad70f27487208ebd4c34d14b44e49b.jpg">
+    <img src="https://i.pinimg.com/736x/ba/7e/be/ba7ebeba148a817ed6e3e2795eb75aea.jpg" >
+    <img src="https://i.pinimg.com/1200x/28/75/9a/28759ae5a7121ebfa9d2d1eca7daddf6.jpg" >
+    <img src="https://i.pinimg.com/736x/cf/cf/89/cfcf89cb0573aebd44bb44fc29a1bd35.jpg" >
+  </div>
+  <div class="gallery-row">
+    <img src="https://i.pinimg.com/1200x/bc/ca/57/bcca57c5746d7b57d8815d81a5f3dfda.jpg">
+    <img src="https://i.pinimg.com/736x/ac/71/3f/ac713f047c232e59cc5067e3ba4a855e.jpg" >
+    <img src="https://i.pinimg.com/736x/b1/d0/e6/b1d0e6f79a59c4cd62797c61573d516f.jpg" >
+    <img src="https://i.pinimg.com/1200x/79/b3/17/79b317f625bfcddbc5140d01a42369ad.jpg" >
+  </div>
+  <div class="gallery-row">
+    <img src="https://i.pinimg.com/1200x/8f/6c/fb/8f6cfb0f6b8bddf6f0d46e1688d304a1.jpg">
+    <img src="https://i.pinimg.com/1200x/16/35/44/163544eb2b33e3173cda19cfbdd71545.jpg" >
+    <img src="https://i.pinimg.com/736x/54/26/bd/5426bdcbb4a85bad2068115bed95cd7c.jpg" >
+    <img src="https://i.pinimg.com/736x/f5/78/7d/f5787d20d9b8857b91b761f94ed60b58.jpg" >
+  </div>
+  <div class="gallery-row">
+    <img src="https://i.pinimg.com/736x/8b/13/55/8b1355352a49e56318cb105eebe9005b.jpg">
+    <img src="https://i.pinimg.com/1200x/98/70/e6/9870e6ee17375df64762aaca91b7343f.jpg" >
+    <img src="https://i.pinimg.com/1200x/4c/ba/2d/4cba2d74909d7ef43c06aad0077318da.jpg" >
+    <img src="https://i.pinimg.com/736x/ea/34/6e/ea346e62880231c3adaff088d55baa06.jpg" >
+  </div>
+  <center>
+    <a href="index.html">
+      <button><b>HOME</b></button>
+    </a>
+  </center>
+</body>
+</html>

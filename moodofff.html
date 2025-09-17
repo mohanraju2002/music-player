@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🥺 BROKEN 🥺</title>
+  <style>
+    body {
+      background-color: rgba(11, 11, 11, 0.963);
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      background-color: aqua;
+      font-size: 30px;
+      text-align: center;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .song-container {
+      position: relative;
+    }
+
+    img {
+      border: 3px solid white;
+      transition: all 0.2s ease-in-out;
+      height: 300px;
+      width: 240px;
+      border-radius: 20px;
+      display: block;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+      box-shadow: 0 0 50px rgb(0, 255, 98);
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 5px;
+      border-radius: 0 0 20px 20px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .song-container:hover .overlay {
+      opacity: 1;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: aqua;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: lightblue;
+      transform: scale(1.05);
+    }
+
+    #nowPlaying {
+      color: white;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🥺 BROKEN 🥺</h1>
+
+  <div class="gallery" id="gallery"></div>
+
+  <center>
+    <a href="index.html"><button><b>HOME</b></button></a>
+  </center>
+
+  <audio id="audioPlayer" controls style="display: block; margin: 20px auto; width: 90%; max-width: 600px;">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="nowPlaying">Click an image to play a song</p>
+
+  <script>
+    const songs = [
+      { img: "https://i.pinimg.com/736x/cf/05/85/cf05857bc04ae85cecd59b96c594756f.jpg", audio: "Raayani Kadhale(KoshalWorld.Com).mp3", title:  "Raayani Kadhale " },
+      { img: "https://i.pinimg.com/736x/80/8e/b0/808eb01b61bcd57503879b3872d1e56f.jpg", audio: "[iSongs.info] 03 - Urime Manase.mp3", title: "Urime Manase" },
+      { img: "https://i.pinimg.com/1200x/44/ee/b6/44eeb6291674e733bfd8cd11631efbfb.jpg", audio: "Oosupodu-SenSongsMp3.Co.mp3", title: "Oosupodu" },
+      { img: "https://i.pinimg.com/1200x/eb/6a/ef/eb6aef6b36ac0e9bf8f57556e9e8b3e4.jpg", audio: "[iSongs.info] 02 - Kadanna Prema.mp3", title: "Kadanna Prema" },
+      { img: "https://i.pinimg.com/1200x/6b/8c/51/6b8c51f0a62610c95ffe31151b8430e9.jpg", audio: "mr perfect.mp3", title: "Mr Perfect" },
+      { img: "https://i.pinimg.com/1200x/97/22/07/972207aa629843334a969546458b5b5f.jpg", audio: "majili.mp3", title: "Majili" },
+      { img: "https://i.pinimg.com/736x/4d/22/1a/4d221a9549a3772cd528fe4880b0402d.jpg", audio: "arjun reddy.mp3", title: "Arjun Reddy" },
+      { img: "https://i.pinimg.com/1200x/00/f8/9a/00f89a95ebfb184fe10752c7e76a3a72.jpg", audio: "ninnu kori.mp3", title: "Ninnu Kori" },
+      { img: "https://i.pinimg.com/1200x/82/59/60/825960fa03307b2f0b995988cd1768b9.jpg", audio: "raju bhai.mp3", title: "Raju Bhai" },
+      { img: "https://i.pinimg.com/736x/72/f2/97/72f29786676ad9226261e5649728e558.jpg", audio: "dear comrade.mp3", title: "Dear Comrade" },
+      { img: "https://i.pinimg.com/736x/8c/87/56/8c8756131c7fd51dd727b9e1f9a4ea79.jpg", audio: "nenu sailja.mp3", title: "Nenu Sailja" },
+      { img: "https://i.pinimg.com/736x/7a/15/d1/7a15d101ffcac626485c1018c423d9e6.jpg", audio: "parugu.mp3", title: "Parugu" },
+      { img: "https://i.pinimg.com/736x/eb/ac/26/ebac26ebf1959aa9ba879dbe1a412fd4.jpg", audio: "badhra.mp3", title: "Badhra" },
+      { img: "https://i.pinimg.com/1200x/a9/80/21/a9802184e1bf5abd1a102ed6044fdc0a.jpg", audio: "manmadhudu.mp3", title: "Manmadhudu" },
+      { img: "https://i.pinimg.com/1200x/ba/00/f4/ba00f41c4d29e37b57011ebc9e834216.jpg", audio: "oyee.mp3", title: "Oyee" },
+      { img: "https://i.pinimg.com/736x/aa/1a/e3/aa1ae361cb6c78fbcf95daddd7c11308.jpg", audio: "aruu.mp3", title: "Aruu" },
+      { img: "https://i.pinimg.com/1200x/5e/a9/c1/5ea9c144dbfd2675a255964f5052e8c7.jpg", audio: "krishna.mp3", title: "Krishna" },
+      { img: "https://i.pinimg.com/1200x/bc/8d/63/bc8d63fa2d29bcb78cd6c288b091c666.jpg", audio: "7th sense.mp3", title: "7th Sense" },
+      { img: "https://i.pinimg.com/1200x/b1/1f/61/b11f61a1cd5b5809fd63cabc56b66c6d.jpg", audio: "song19.mp3", title: "100%love" },
+      { img: "https://i.pinimg.com/1200x/74/2a/b5/742ab5e48d135c7a0d43bbfb5edd2480.jpg", audio: "song20.mp3", title: "7g brundhavanam" }
+    ];
+
+    const gallery = document.getElementById('gallery');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const nowPlaying = document.getElementById('nowPlaying');
+
+    let currentIndex = -1; // Track current song index
+
+    // Shuffle function
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    const shuffledSongs = shuffle([...songs]); // Copy and shuffle
+
+    // Generate image elements dynamically
+    shuffledSongs.forEach((song, index) => {
+      const container = document.createElement('div');
+      container.classList.add('song-container');
+
+      const img = document.createElement('img');
+      img.src = song.img;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'overlay';
+      overlay.textContent = song.title;
+
+      img.addEventListener('click', () => {
+        currentIndex = index;
+        audioPlayer.src = song.audio;
+        audioPlayer.play();
+        nowPlaying.textContent = `Now Playing: ${song.title}`;
+      });
+
+      container.appendChild(img);
+      container.appendChild(overlay);
+      gallery.appendChild(container);
+    });
+
+    // Auto-play next song
+    audioPlayer.addEventListener('ended', () => {
+      currentIndex = (currentIndex + 1) % shuffledSongs.length;
+      const nextSong = shuffledSongs[currentIndex];
+      audioPlayer.src = nextSong.audio;
+      audioPlayer.play();
+      nowPlaying.textContent = `Now Playing: ${nextSong.title}`;
+    });
+  </script>
+</body>
+</html>
+
+
